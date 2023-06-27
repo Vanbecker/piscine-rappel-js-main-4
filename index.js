@@ -96,14 +96,16 @@ const mealCategoriesListComponent = async () => {
     const data = await response.json();
     const categories = data.categories;
 
-    // const divRoot = document.getElementById("root");
+    // Création d'un conteneur pour les catégories
     const categoriesContainer = createNodeElement("div", { class: "categories-container" });
 
     categories.forEach((category) => {
+      // Création d'un élément h2 pour afficher le nom de la catégorie
       const categoryTitleElement = createNodeElement("h2", { class: "category-title" }, category.strCategory);
       categoriesContainer.appendChild(categoryTitleElement);
     });
 
+    // Ajout du conteneur des catégories à l'élément racine (divRoot)
     divRoot.appendChild(categoriesContainer);
   } catch (error) {
     console.error('Une erreur s\'est produite lors de la récupération des catégories de repas.', error);
@@ -112,4 +114,5 @@ const mealCategoriesListComponent = async () => {
 
 // Appel du composant mealCategoriesListComponent pour afficher la liste des catégories
 mealCategoriesListComponent();
+
 
